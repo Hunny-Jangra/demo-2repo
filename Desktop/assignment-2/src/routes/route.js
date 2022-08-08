@@ -32,7 +32,52 @@ router.get('/test-you', function(req, res){
 router.get('/give-me-students-data',function(req, res){
 
 })
+const moviesArr = ['Hobs&Show', 'Fast and Furious', 'Kick', 'Bahubali'];
+router.get('/movies', (req, res) => {
+    console.log(moviesArr);
+    res.send(`Movies array ${moviesArr}`);
+})
+router.get('/movies/:indexNumber', (req,res) => {
+    const moviesArr = ['Hobs&Show', 'Fast and Furious', 'Kick', 'Bahubali'];
+    if(moviesArr[req.params.indexNumber]){
+        res.status(200).send(`${moviesArr[req.params.indexNumber]}`);
+    }
+    else{
+        res.status(400).send(`Invalid value check properly enter value !`)
+    }
+    // console.log(moviesArr[req.params.indexNumber]);
+    
+})
+const arrofOffilms = [ {
+    id: 1,
+    name: "The Shining"
+   }, {
+    id: 2,
+    name: "Incendies"
+   }, {
+    id: 3,
+    name: "Rang de Basanti"
+   }, {
+    id: 4,
+    name: "Finding Nemo"
+   }]
+router.get('/films', (req,res) => {
+    res.send(arrofOffilms);
+})
 
+router.get('/films/:filmId', (req, res) => {
+    let arrindex = req.params.filmId-1;
+    if(arrofOffilms[arrindex]){
+        res.send(arrofOffilms[arrindex]); 
+    }
+    else{
+        res.status(400).json({
+            status : 'Invalid Entry!',
+            message : 'No movie exists with this id'
+        })
+    }
 
+})
+   
 module.exports = router;
 // adding this comment for no reason
