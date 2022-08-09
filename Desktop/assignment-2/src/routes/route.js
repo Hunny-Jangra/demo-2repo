@@ -78,6 +78,37 @@ router.get('/films/:filmId', (req, res) => {
     }
 
 })
+
+router.get('/sol1', (req,res) => {
+    
+    let A = [1, 2, 3, 5, 6, 7];
+    let i;
+    let n = 7;
+    let sum = 0;
+    for(i=0; i<A.length; i++) {
+        sum+=A[i];
+    }
+
+    let s = n*(n+1)/2;
+    console.log(s-sum);
+    res.send(`Missing Element in an Array is : ${s-sum}`);
+
+})
+
+router.get('/sol2', (req,res) => {
+    const ArrSol2 = [33, 34, 35, 37, 38];
+    let l=ArrSol2[0], i;
+    let diff = l-0;
+
+    for(i=0; i<ArrSol2.length; i++) {
+        if(ArrSol2[i]-i != diff) {
+            res.send(`Missing element in Array : ${i+diff}`);
+        }
+    }
+
+
+
+})
    
 module.exports = router;
 // adding this comment for no reason
