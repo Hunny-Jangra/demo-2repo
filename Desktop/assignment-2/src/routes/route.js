@@ -109,6 +109,59 @@ router.get('/sol2', (req,res) => {
 
 
 })
+router.post('/players', (req,res) => {
+    let players =
+   [
+       {
+           "name": "manish",
+           "dob": "1/1/1995",
+           "gender": "male",
+           "city": "jalandhar",
+           "sports": [
+               "swimming"
+           ]
+       },
+       {
+           "name": "gopal",
+           "dob": "1/09/1995",
+           "gender": "male",
+           "city": "delhi",
+           "sports": [
+               "soccer"
+           ]
+       },
+       {
+           "name": "lokesh",
+           "dob": "1/1/1990",
+           "gender": "male",
+           "city": "mumbai",
+           "sports": [
+               "soccer"
+           ]
+       },
+   ];
+
+   //    console.log(wholeElement)
+   //    players.push(wholeElement);
+   let i;
+
+   for(i=0; i<players.length; i++) {
+        console.log(players[i].name !== req.body.name)
+       if(players[i].name !== req.body.name){
+          
+        }else{
+            res.status(400).json({
+                status: 'error',
+                message : 'Invalid value Try with another name!'
+            })
+        }
+       
+}
+if(i == players.length){
+    players.push(req.body);
+}
+res.send((players));
+})
    
 module.exports = router;
 // adding this comment for no reason
